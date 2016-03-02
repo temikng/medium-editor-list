@@ -1,0 +1,24 @@
+{
+  "name": "medium-editor-list",
+  "version": "0.0.1",
+  "description": "MediumEditor list extension.",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkawczynski07/medium-editor-list.git"
+  },
+  "keywords": [
+    "MediumEditor",
+    "Extension",
+    "list",
+    "plugin"
+  ],
+  "author": "mkawczynski07@gmail.com",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/mkawczynski07/medium-editor-list/issues"
+  }
+}
