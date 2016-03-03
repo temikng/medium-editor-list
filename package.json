@@ -2,7 +2,7 @@
   "name": "medium-editor-list",
   "version": "0.0.1",
   "description": "MediumEditor list extension.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "gulp test"
   },
@@ -17,8 +17,20 @@
     "plugin"
   ],
   "author": "mkawczynski07@gmail.com",
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mkawczynski07/medium-editor-list/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "gulp-connect": "~3.1.0",
+    "jshint": "~2.9.1",
+    "gulp-jshint": "~2.0.0",
+    "gulp-browserify": "~0.5.1",
+    "gulp-rename": "~1.2.2",
+    "opn": "~4.0.0"
+  },
+  "dependencies": {
+    "medium-editor": "~5.14.4"
   }
 }
