@@ -1,9 +1,18 @@
 var gulp = require('gulp'),
         connect = require('gulp-connect'),
         jshint = require('gulp-jshint'),
-        browserify = require('gulp-browserify'),
+        concat = require('gulp-concat'),
         rename = require('gulp-rename'),
-        opn = require('opn');
+        opn = require('opn'),
+        uglify = require('gulp-uglify'),
+        jsSrc = [
+            './src/wrapper/start.js',
+            './src/utils.js',
+            './src/const.js',
+            './src/List.js',
+            './src/MediumEditorList.js',
+            './src/wrapper/stop.js'
+        ];
 
 
 gulp.task('connect', function () {
@@ -21,17 +30,25 @@ gulp.task('html', function () {
 
 
 gulp.task('scripts', function () {
-    return gulp.src('src/index.js')
+    return gulp.src(jsSrc)
             .pipe(jshint())
             .pipe(jshint.reporter('default'))
-            .pipe(browserify({
-                insertGlobals: true
-            }))
+            .pipe(concat('all.js'))
             .pipe(rename(function (path) {
-                path.basename = 'bundle';
+                path.basename = 'medium-editor-list';
             }))
             .pipe(gulp.dest('build'))
             .pipe(connect.reload());
+});
+
+gulp.task('build-prod', function () {
+    return gulp.src(jsSrc)
+            .pipe(concat('all.js'))
+            .pipe(uglify())
+            .pipe(rename(function (path) {
+                path.basename = 'medium-editor-list-min';
+            }))
+            .pipe(gulp.dest('build'));
 });
 
 gulp.task('watch', function () {
@@ -39,8 +56,8 @@ gulp.task('watch', function () {
     gulp.watch(['./example.html'], ['html']);
 });
 
-gulp.task('open', function(){
-    opn('http://localhost:1337/example.html');
+gulp.task('open', function () {
+    opn('http://localhost:1337/example.html', {app: ['chrome']});
 });
 
 gulp.task('default', ['connect', 'scripts', 'open', 'watch']);
