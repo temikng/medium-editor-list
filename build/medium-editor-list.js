@@ -7,7 +7,7 @@
     } else {
         root.MediumEditorList = factory;
     }
-}(this, function () {
+}(this, function (MediumEditor) {
     
 function isDefined(object) {
     return typeof object !== 'undefined' && object !== null;
@@ -237,4 +237,4 @@ var MediumEditorList = MediumEditor.Extension.extend({
 });
 
     return MediumEditorList;
-}()));
+}(typeof require === 'function' ? require('medium-editor') : MediumEditor)));
