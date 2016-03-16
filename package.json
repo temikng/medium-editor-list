@@ -1,6 +1,6 @@
 {
   "name": "medium-editor-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MediumEditor List extension.",
   "main": "build/medium-editor-list.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/mkawczynski07/medium-editor-list.git"
   },
- "homepage": "https://github.com/mkawczynski07/medium-editor-list",
+  "homepage": "https://github.com/mkawczynski07/medium-editor-list",
   "keywords": [
     "editor",
     "medium",
