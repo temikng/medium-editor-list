@@ -88,4 +88,4 @@ Options to customize medium-editor-list are passed as the argument of the Medium
 
 ## License
 
-https://github.com/mkawczynski07/medium-editor-list/blob/master/LICENSE
+https://github.com/mkawczynski07/medium-editor-list/blob/master/LICENSE.md

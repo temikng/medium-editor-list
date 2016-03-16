@@ -7,5 +7,5 @@
     } else {
         root.MediumEditorList = factory;
     }
-}(this, function () {
+}(this, function (MediumEditor) {
     
