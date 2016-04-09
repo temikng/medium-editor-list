@@ -12,7 +12,7 @@ npm install medium-editor-list
 
 ## Demo page
 
-(medium-editor-list)[http://mkawczynski07.github.io/medium-editor-list/].
+[medium-editor-list](http://mkawczynski07.github.io/medium-editor-list/).
 
 ## Usage
 
