@@ -10,6 +10,10 @@ You can install manually or either by using npm:
 npm install medium-editor-list
 ```
 
+## Demo page
+
+(medium-editor-list)[http://mkawczynski07.github.io/medium-editor-list/].
+
 ## Usage
 
 ```html
