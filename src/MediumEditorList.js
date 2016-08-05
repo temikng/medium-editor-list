@@ -24,8 +24,10 @@ var MediumEditorList = MediumEditor.Extension.extend({
             this.addList(list);
         }
     },
-    getExistsingLists: function () {
-        var $lists = this.editor.origElements.querySelector('ul.' + MEDIUM_EDITOR_CLASS);
+    getExistingLists: function () {
+        var $lists = this.editor.origElements[0]
+            ? this.editor.origElements[0].querySelector('ul.' + MEDIUM_EDITOR_CLASS)
+            : this.editor.origElements.querySelector('ul.' + MEDIUM_EDITOR_CLASS);
         return isDefined($lists) ? $lists : [];
     },
     getButton: function () {

@@ -2,7 +2,7 @@ var List = function (extension, options) {
     var me = this,
             $document = extension.document,
             editor = extension.base,
-            $editorElement = editor.origElements,
+            $editorElement = editor.origElements[0] || editor.origElements,
             $addParagraph,
             $paragraphs,
             $element,
@@ -23,9 +23,9 @@ var List = function (extension, options) {
 
     function create(content) {
         var time = new Date().getTime(), $list;
-        content = content ? '<li>' + content + '<li>' : options.newParagraphTemplate;
+        content = content ? '<li>' + content + '</li>' : options.newParagraphTemplate;
         editor.pasteHTML('<ul class="' + MEDIUM_EDITOR_CLASS + '" ' + ID_ATTRIBUTE + '="' + time + '">'
-                + ' <li>' + content + '</li>'
+                + content
                 + getAddParagraphTemplate()
                 + '</ul><br/>', {
                     cleanAttrs: []
