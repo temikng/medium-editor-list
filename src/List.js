@@ -2,7 +2,7 @@ var List = function (extension, options) {
     var me = this,
             $document = extension.document,
             editor = extension.base,
-            $editorElement = editor.origElements,
+            $editorElement = editor.origElements[0] || editor.origElements,
             $addParagraph,
             $paragraphs,
             $element,
