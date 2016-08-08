@@ -14,7 +14,7 @@ var MediumEditorList = MediumEditor.Extension.extend({
         me.editor = this.base;
         me.listInstances = {};
         me.on(me.button, 'click', me.onClick.bind(me));
-        // and it timeout to send at the end of the event stack. Need when used with angular.
+        // call inside a timeout to send at the end of the event stack. Needed when used with angular.
         (function (self) {
             window.setTimeout(function () {
                 self.initExistsingLists();
