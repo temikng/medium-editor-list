@@ -61,7 +61,7 @@ var List = function (extension, options) {
     var me = this,
             $document = extension.document,
             editor = extension.base,
-            $editorElement = editor.origElements,
+            $editorElement = editor.origElements[0] || editor.origElements,
             $addParagraph,
             $paragraphs,
             $element,
@@ -82,9 +82,9 @@ var List = function (extension, options) {
 
     function create(content) {
         var time = new Date().getTime(), $list;
-        content = content ? '<li>' + content + '<li>' : options.newParagraphTemplate;
+        content = content ? '<li>' + content + '</li>' : options.newParagraphTemplate;
         editor.pasteHTML('<ul class="' + MEDIUM_EDITOR_CLASS + '" ' + ID_ATTRIBUTE + '="' + time + '">'
-                + ' <li>' + content + '</li>'
+                + content
                 + getAddParagraphTemplate()
                 + '</ul><br/>', {
                     cleanAttrs: []
@@ -187,7 +187,12 @@ var MediumEditorList = MediumEditor.Extension.extend({
         me.editor = this.base;
         me.listInstances = {};
         me.on(me.button, 'click', me.onClick.bind(me));
-        me.initExistsingLists();
+        // call inside a timeout to send at the end of the event stack. Needed when used with angular.
+        (function (self) {
+            window.setTimeout(function () {
+                self.initExistsingLists();
+            }, 0);
+        })(me);
     },
     initExistsingLists: function () {
         var $lists = this.getExistsingLists(),
@@ -197,8 +202,10 @@ var MediumEditorList = MediumEditor.Extension.extend({
             this.addList(list);
         }
     },
-    getExistsingLists: function () {
-        var $lists = this.editor.origElements.querySelector('ul.' + MEDIUM_EDITOR_CLASS);
+    getExistingLists: function () {
+        var $lists = this.editor.origElements[0]
+            ? this.editor.origElements[0].querySelectorAll('ul.' + MEDIUM_EDITOR_CLASS)
+            : this.editor.origElements.querySelectorAll('ul.' + MEDIUM_EDITOR_CLASS);
         return isDefined($lists) ? $lists : [];
     },
     getButton: function () {
@@ -235,6 +242,7 @@ var MediumEditorList = MediumEditor.Extension.extend({
         }
     }
 });
+
 
     return MediumEditorList;
 }(typeof require === 'function' ? require('medium-editor') : MediumEditor)));
