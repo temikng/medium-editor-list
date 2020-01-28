@@ -22,7 +22,7 @@ var MediumEditorList = MediumEditor.Extension.extend({
         })(me);
     },
     initExistsingLists: function () {
-        var $lists = this.getExistingLists(),
+        var $lists = this.getExistsingLists(),
                 x = 0, length = $lists.length, list;
         for (; x < length; x += 1) {
             list = new List(this, this.options).init($lists[x]);
