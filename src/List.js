@@ -24,12 +24,11 @@ var List = function (extension, options) {
     function create(content) {
         var time = new Date().getTime(), $list;
         content = content ? '<li>' + content + '</li>' : options.newParagraphTemplate;
-        editor.pasteHTML('<ul class="' + MEDIUM_EDITOR_CLASS + '" ' + ID_ATTRIBUTE + '="' + time + '">'
-                + content
-                + getAddParagraphTemplate()
-                + '</ul><br/>', {
-                    cleanAttrs: []
-                });
+        var htmlData = '<ul class="' + MEDIUM_EDITOR_CLASS + '" ' + ID_ATTRIBUTE + '="' + time + '">'
+            + content
+            + getAddParagraphTemplate()
+            + '</ul>';
+        editor.pasteHTML(htmlData, { cleanAttrs: [] });
         $list = $editorElement.querySelector('ul[' + ID_ATTRIBUTE + '="' + time + '"].' + MEDIUM_EDITOR_CLASS);
         return init($list);
     }
@@ -108,6 +107,9 @@ var List = function (extension, options) {
     }
 
     function getAddParagraphTemplate() {
+        if (options.addParagraphTemplate === '') {
+            return '';
+        }
         return '<li class="' + ADD_PARAGRAPH_CLASS + '">' + options.addParagraphTemplate + '</li>';
     }
 };
