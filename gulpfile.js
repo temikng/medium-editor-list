@@ -46,7 +46,7 @@ gulp.task('build-prod', function () {
             .pipe(concat('all.js'))
             .pipe(uglify())
             .pipe(rename(function (path) {
-                path.basename = 'medium-editor-list-min';
+                path.basename = 'medium-editor-list.min';
             }))
             .pipe(gulp.dest('build'));
 });
